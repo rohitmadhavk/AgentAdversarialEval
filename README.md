@@ -272,5 +272,3 @@ results/
    report.md         - the output report for that run
    tasks.db          - the state of the db for that run
 ```
-# AgentAdversarialEval
-# AgentAdversarialEval
