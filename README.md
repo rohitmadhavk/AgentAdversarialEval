@@ -17,7 +17,7 @@ Assignment 2 — Agent, Adversarial Eval.
 6. [Decisions and Alternatives](#decisions-and-alternatives)
    - [Ship prompt decision](#ship-prompt-decision)
 7. [What I Would Do Differently With Another Week](#what-i-would-do-differently-with-another-week)
-8. [Reproducing](#reproducing)
+8. [Setup Instructions](#setup-instructions)
 9. [File Map](#file-map)
 
 ## Why This Assignment
@@ -207,7 +207,7 @@ NVIDIA NIM was the right choice among the first three options — the RPD limit 
 
 **A/B variable chosen for signal, not for safety.** The verbosity axis was chosen because it is the only free variable remaining after ruling out correctness-required instructions. With a real week I would design the prompt variants first and the case set second, so the cases are adversarial specifically against the dimension under test — rather than inheriting a correctness-focused case set and then finding the only safe variable is word count.
 
-## Reproducing
+## Setup Instructions
 
 ```bash
 export GROQ_API_KEY=your_key_here   # https://console.groq.com — free, no credit card
@@ -216,6 +216,13 @@ make run          # full eval (Phase 1: A/B + Phase 2: fault injection)
 make agent        # interactive REPL
 make eval-fail    # global fault injection — all three tools fail simultaneously
 ```
+
+OPTIONAL (If choosing a different model service, GOOGLE AI Studio or NVIDIA):
+```bash
+export GOOGLE_API_KEY=your_key_here
+export NVIDIA_API_KEY=your_key_here
+```
+and fill the details in [__init__.py](llm/__init__.py) for model selection and provider client selection.
 
 Requires Python ≥ 3.12 and [uv](https://docs.astral.sh/uv/).
 
