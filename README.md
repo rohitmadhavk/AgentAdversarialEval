@@ -260,3 +260,4 @@ docs/
   ANALYSIS.md        — full failure mode documentation (11 entries, historical + current)
 ```
 # AgentAdversarialEval
+# AgentAdversarialEval
