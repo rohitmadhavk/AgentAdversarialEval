@@ -266,6 +266,11 @@ llm/
   __init__.py        — provider factory (swap active provider here)
 docs/
   ANALYSIS.md        — full failure mode documentation (11 entries, historical + current)
+  reqs.md            - full assignment reqs for reference
+results/
+   eval_results.json - my snapshot results for a run
+   report.md         - the output report for that run
+   tasks.db          - the state of the db for that run
 ```
 # AgentAdversarialEval
 # AgentAdversarialEval
