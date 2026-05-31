@@ -15,6 +15,7 @@ Assignment 2 — Agent, Adversarial Eval.
    - [Phase 2 — Fault Injection](#phase-2--fault-injection)
 5. [Failure Mode](#failure-mode)
 6. [Decisions and Alternatives](#decisions-and-alternatives)
+   - [Ship prompt decision](#ship-prompt-decision)
 7. [What I Would Do Differently With Another Week](#what-i-would-do-differently-with-another-week)
 8. [Reproducing](#reproducing)
 9. [File Map](#file-map)
