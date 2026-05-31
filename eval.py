@@ -30,13 +30,13 @@ import time
 from dataclasses import dataclass, field
 
 from agent import run_turn
-from cases import Case, CASES, FAULT_CASES, MULTI_TURN_CASES
+from cases import Case, CASES, FAULT_CASES
 from db import init_db, reset_db
 from fault import wrap_tools
 from hooks import TimingHook
 from llm import get_provider
 from prompts import PROMPTS
-from scoring import score, score_fault, score_turn
+from scoring import score, score_fault
 from tools import TOOL_FUNCTIONS
 
 # ── harness ───────────────────────────────────────────────────────────────────
@@ -216,78 +216,6 @@ def run_fault_injection(
     return results
 
 
-def run_multi_turn_eval(
-    only_prompt: str | None = None,
-) -> dict[str, list[dict]]:
-    """Phase 3: multi-turn eval on MULTI_TURN_CASES for every prompt.
-
-    Each case is a conversation sequence where the correct tool call on turn N
-    depends on information produced in turn N-1.  History is carried across
-    turns; the DB is reset before each case.
-
-    Returns a dict keyed by prompt name → list of case-level result dicts.
-    """
-    if not MULTI_TURN_CASES:
-        return {}
-    provider = get_provider()
-    prompts_to_run = {
-        k: v for k, v in PROMPTS.items()
-        if only_prompt is None or k == only_prompt
-    }
-    results: dict[str, list[dict]] = {}
-
-    for prompt_name, system_prompt in prompts_to_run.items():
-        print(f"\n{'='*56}\n  MULTI-TURN EVAL  ({prompt_name})\n{'='*56}")
-        case_rows: list[dict] = []
-        for mt_case in MULTI_TURN_CASES:
-            reset_db()
-            history: list[dict] = []
-            turn_rows: list[dict] = []
-            case_pass = True
-            print(f"\n  Case MT{mt_case.id}: {mt_case.description}")
-            for t_idx, turn in enumerate(mt_case.turns, 1):
-                print(f"    Turn {t_idx}: {turn.prompt[:60]}…")
-                tool_timings: list[dict] = []
-                try:
-                    result = run_turn(
-                        turn.prompt, system_prompt,
-                        history=history,
-                        provider=provider,
-                        hooks=TimingHook(tool_timings),
-                    )
-                except Exception as exc:
-                    ok, note = False, f"CRASH: {exc}"
-                    turn_rows.append({
-                        "turn": t_idx, "pass": False,
-                        "tools_called": [], "response": "", "note": note,
-                    })
-                    case_pass = False
-                    print(f"      ✗ {note}")
-                    break
-
-                history = result["messages"]
-                ok, note = score_turn(turn, result["tools_called"], result["response"])
-                if not ok:
-                    case_pass = False
-                print(f"      {'✓' if ok else '✗'} {note}")
-                turn_rows.append({
-                    "turn": t_idx,
-                    "pass": ok,
-                    "tools_called": result["tools_called"],
-                    "response": result["response"][:120],
-                    "note": note,
-                })
-
-            case_rows.append({
-                "case_id": mt_case.id,
-                "description": mt_case.description,
-                "pass": case_pass,
-                "turns": turn_rows,
-            })
-        results[prompt_name] = case_rows
-    return results
-
-
 # ── reporting ─────────────────────────────────────────────────────────────────
 
 def _p95(lats: list[float]) -> float:
@@ -298,11 +226,7 @@ def _p95(lats: list[float]) -> float:
     return s[idx]
 
 
-def print_report(
-    results: dict[str, PromptResult],
-    fault_rows: dict[str, list[dict]],
-    multi_turn_rows: dict[str, list[dict]] | None = None,
-) -> None:
+def print_report(results: dict[str, PromptResult], fault_rows: dict[str, list[dict]]) -> None:
     W = 56
     print(f"\n{'='*W}\n  RESULTS SUMMARY\n{'='*W}")
     summary: list[dict] = []
@@ -347,18 +271,7 @@ def print_report(
             for r in rows:
                 print(f"        Case {r['case_id']:02d} [{r.get('injected_tool', '?')}]: {r['note']}")
 
-    # Multi-turn summary
-    if multi_turn_rows:
-        print(f"\n  ── Multi-turn eval ──")
-        for prompt_name, cases in multi_turn_rows.items():
-            passed = sum(c["pass"] for c in cases)
-            print(f"    {prompt_name}:  {passed}/{len(cases)} cases passed")
-            for c in cases:
-                mark = "✓" if c["pass"] else "✗"
-                print(f"      {mark} MT{c['case_id']}: {c['description']}")
-                for t in c["turns"]:
-                    tm = "✓" if t["pass"] else "✗"
-                    print(f"          Turn {t['turn']} {tm}  {t['note']}")
+    
 
     # Persist results — merge into existing JSON so partial runs patch individual rows
     out_path = "eval_results.json"
@@ -378,9 +291,6 @@ def print_report(
     if fault_rows:
         existing["fault_injection"] = fault_rows  # dict keyed by prompt name
 
-    if multi_turn_rows:
-        existing["multi_turn"] = multi_turn_rows
-
     with open(out_path, "w") as fh:
         json.dump(existing, fh, indent=2)
     print(f"\n  Saved → {out_path}")
@@ -396,28 +306,16 @@ if __name__ == "__main__":
                         help="Run a single prompt variant only (e.g. --prompt prompt_a_verbose)")
     parser.add_argument("--fault-only", action="store_true",
                         help="Skip Phase 1 and run fault injection only")
-    parser.add_argument("--multi-turn-only", action="store_true",
-                        help="Skip Phase 1/2 and run multi-turn eval only")
     args = parser.parse_args()
 
     force = os.environ.get("FORCE_FAIL", "")
     if force:
         print(f"⚠  FORCE_FAIL={force} (global injection active)")
 
-    skip_phase1 = args.fault_only or args.multi_turn_only
-    if not skip_phase1:
+    if not args.fault_only:
         eval_results = run_eval(only_case=args.case, only_prompt=args.prompt)
     else:
         eval_results = {}
 
-    fault_results = (
-        run_fault_injection(only_prompt=args.prompt)
-        if not args.case and not args.multi_turn_only
-        else {}
-    )
-    multi_turn_results = (
-        run_multi_turn_eval(only_prompt=args.prompt)
-        if not args.case and not args.fault_only
-        else {}
-    )
-    print_report(eval_results, fault_results, multi_turn_results)
+    fault_results = run_fault_injection(only_prompt=args.prompt) if not args.case else {}
+    print_report(eval_results, fault_results)
