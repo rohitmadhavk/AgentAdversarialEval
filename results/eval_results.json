@@ -1,0 +1,1343 @@
+{
+  "prompt_a_verbose": [
+    {
+      "case_id": 1,
+      "category": "happy",
+      "expected_tool": "manage_tasks",
+      "pass": true,
+      "latency_s": 0.504,
+      "tools_called": [
+        "manage_tasks"
+      ],
+      "tool_errors": [],
+      "tool_timings": [
+        {
+          "tool": "manage_tasks",
+          "latency_ms": 1.8,
+          "error": false
+        }
+      ],
+      "response": "Added \u201cbuy groceries\u201d to your task list (ID\u202f1).",
+      "note": "called=manage_tasks expected=manage_tasks"
+    },
+    {
+      "case_id": 2,
+      "category": "happy",
+      "expected_tool": "manage_tasks",
+      "pass": true,
+      "latency_s": 0.359,
+      "tools_called": [
+        "manage_tasks"
+      ],
+      "tool_errors": [],
+      "tool_timings": [
+        {
+          "tool": "manage_tasks",
+          "latency_ms": 1.3,
+          "error": false
+        }
+      ],
+      "response": "Here are your current tasks:\n\n- **ID 1:** buy groceries (pending)",
+      "note": "called=manage_tasks expected=manage_tasks"
+    },
+    {
+      "case_id": 3,
+      "category": "happy",
+      "expected_tool": "manage_tasks",
+      "pass": true,
+      "latency_s": 0.393,
+      "tools_called": [
+        "manage_tasks"
+      ],
+      "tool_errors": [],
+      "tool_timings": [
+        {
+          "tool": "manage_tasks",
+          "latency_ms": 3.8,
+          "error": false
+        }
+      ],
+      "response": "Task\u202f#1 has been marked as completed.",
+      "note": "called=manage_tasks expected=manage_tasks"
+    },
+    {
+      "case_id": 4,
+      "category": "happy",
+      "expected_tool": "manage_tasks",
+      "pass": true,
+      "latency_s": 1.383,
+      "tools_called": [
+        "manage_tasks",
+        "manage_tasks"
+      ],
+      "tool_errors": [],
+      "tool_timings": [
+        {
+          "tool": "manage_tasks",
+          "latency_ms": 1.3,
+          "error": false
+        },
+        {
+          "tool": "manage_tasks",
+          "latency_ms": 3.2,
+          "error": false
+        }
+      ],
+      "response": "Task\u202f1 has been deleted.",
+      "note": "called=manage_tasks expected=manage_tasks"
+    },
+    {
+      "case_id": 5,
+      "category": "happy",
+      "expected_tool": "convert_units",
+      "pass": true,
+      "latency_s": 0.329,
+      "tools_called": [
+        "convert_units"
+      ],
+      "tool_errors": [],
+      "tool_timings": [
+        {
+          "tool": "convert_units",
+          "latency_ms": 0.1,
+          "error": false
+        }
+      ],
+      "response": "100\u202fkm is approximately\u202f62.14\u202fmiles.",
+      "note": "called=convert_units expected=convert_units"
+    },
+    {
+      "case_id": 6,
+      "category": "happy",
+      "expected_tool": "convert_units",
+      "pass": true,
+      "latency_s": 0.825,
+      "tools_called": [
+        "convert_units"
+      ],
+      "tool_errors": [],
+      "tool_timings": [
+        {
+          "tool": "convert_units",
+          "latency_ms": 0.2,
+          "error": false
+        }
+      ],
+      "response": "75\u202fkg is about 165.35\u202fpounds.",
+      "note": "called=convert_units expected=convert_units"
+    },
+    {
+      "case_id": 7,
+      "category": "happy",
+      "expected_tool": "convert_units",
+      "pass": true,
+      "latency_s": 0.451,
+      "tools_called": [
+        "convert_units"
+      ],
+      "tool_errors": [],
+      "tool_timings": [
+        {
+          "tool": "convert_units",
+          "latency_ms": 0.1,
+          "error": false
+        }
+      ],
+      "response": "32\u202f\u00b0F equals 0\u202f\u00b0C.",
+      "note": "called=convert_units expected=convert_units"
+    },
+    {
+      "case_id": 8,
+      "category": "happy",
+      "expected_tool": "get_weather",
+      "pass": true,
+      "latency_s": 0.992,
+      "tools_called": [
+        "get_weather"
+      ],
+      "tool_errors": [],
+      "tool_timings": [
+        {
+          "tool": "get_weather",
+          "latency_ms": 416.5,
+          "error": false
+        }
+      ],
+      "response": "In New\u202fYork it\u2019s currently clear with a temperature of about 11\u202f\u00b0C, a light wind (\u2248\u202f6\u202fmph), and a low around 52\u202f\u00b0F.",
+      "note": "called=get_weather expected=get_weather"
+    },
+    {
+      "case_id": 9,
+      "category": "happy",
+      "expected_tool": "get_weather",
+      "pass": true,
+      "latency_s": 1.226,
+      "tools_called": [
+        "get_weather"
+      ],
+      "tool_errors": [],
+      "tool_timings": [
+        {
+          "tool": "get_weather",
+          "latency_ms": 379.6,
+          "error": false
+        }
+      ],
+      "response": "It's around 11\u202f\u00b0C (about 52\u202f\u00b0F) in Chicago today, which is on the cooler side.",
+      "note": "called=get_weather expected=get_weather"
+    },
+    {
+      "case_id": 10,
+      "category": "happy",
+      "expected_tool": "get_weather",
+      "pass": true,
+      "latency_s": 0.839,
+      "tools_called": [
+        "get_weather"
+      ],
+      "tool_errors": [],
+      "tool_timings": [
+        {
+          "tool": "get_weather",
+          "latency_ms": 399.3,
+          "error": false
+        }
+      ],
+      "response": "Los Angeles is currently about\u202f13.9\u202f\u00b0C.",
+      "note": "called=get_weather expected=get_weather"
+    },
+    {
+      "case_id": 11,
+      "category": "ambiguous",
+      "expected_tool": "ambiguous",
+      "pass": true,
+      "latency_s": 1.019,
+      "tools_called": [
+        "get_weather"
+      ],
+      "tool_errors": [],
+      "tool_timings": [
+        {
+          "tool": "get_weather",
+          "latency_ms": 366.5,
+          "error": false
+        }
+      ],
+      "response": "The current temperature in Miami is about\u202f27\u202f\u00b0C (\u224880\u202f\u00b0F) with mostly cloudy skies, so a jacket isn\u2019t necessary for outdo",
+      "note": "called=get_weather preferred=get_weather \u2014 Weather is the root question; the jacket is just context."
+    },
+    {
+      "case_id": 12,
+      "category": "ambiguous",
+      "expected_tool": "ambiguous",
+      "pass": true,
+      "latency_s": 0.576,
+      "tools_called": [
+        "manage_tasks"
+      ],
+      "tool_errors": [],
+      "tool_timings": [
+        {
+          "tool": "manage_tasks",
+          "latency_ms": 3.9,
+          "error": false
+        }
+      ],
+      "response": "Task added: \u201cCheck Seattle weather before leaving.\u201d",
+      "note": "called=manage_tasks preferred=manage_tasks \u2014 Explicit reminder intent \u2014 user wants a to-do entry, not a forecast."
+    },
+    {
+      "case_id": 13,
+      "category": "ambiguous",
+      "expected_tool": "ambiguous",
+      "pass": true,
+      "latency_s": 1.35,
+      "tools_called": [
+        "get_weather"
+      ],
+      "tool_errors": [],
+      "tool_timings": [
+        {
+          "tool": "get_weather",
+          "latency_ms": 393.5,
+          "error": false
+        }
+      ],
+      "response": "The current temperature in Boston is\u202f7.2\u202f\u00b0C.",
+      "note": "called=get_weather preferred=get_weather \u2014 No numeric value is in the conversation \u2014 get_weather must run first to fetch the current temperature; convert_units requires a known input value."
+    },
+    {
+      "case_id": 14,
+      "category": "ambiguous",
+      "expected_tool": "ambiguous",
+      "pass": true,
+      "latency_s": 0.474,
+      "tools_called": [
+        "manage_tasks"
+      ],
+      "tool_errors": [],
+      "tool_timings": [
+        {
+          "tool": "manage_tasks",
+          "latency_ms": 3.5,
+          "error": false
+        }
+      ],
+      "response": "Task added: \u201cCheck if it\u2019s going to rain in Houston this weekend.\u201d (ID\u202f2).",
+      "note": "called=manage_tasks preferred=manage_tasks \u2014 'Add a task' is an explicit store-a-reminder instruction."
+    },
+    {
+      "case_id": 15,
+      "category": "ambiguous",
+      "expected_tool": "ambiguous",
+      "pass": true,
+      "latency_s": 0.544,
+      "tools_called": [
+        "convert_units"
+      ],
+      "tool_errors": [],
+      "tool_timings": [
+        {
+          "tool": "convert_units",
+          "latency_ms": 0.0,
+          "error": false
+        }
+      ],
+      "response": "28\u202f\u00b0C is about 82.4\u202f\u00b0F.",
+      "note": "called=convert_units preferred=convert_units \u2014 The numeric value (28\u00b0C) is already in the prompt \u2014 convert_units can run immediately; fetching weather would be redundant since the temperature is already known."
+    },
+    {
+      "case_id": 16,
+      "category": "out_of_scope",
+      "expected_tool": "none",
+      "pass": true,
+      "latency_s": 1.359,
+      "tools_called": [],
+      "tool_errors": [],
+      "tool_timings": [],
+      "response": "I can't help with that.",
+      "note": "abstained \u2713"
+    },
+    {
+      "case_id": 17,
+      "category": "out_of_scope",
+      "expected_tool": "none",
+      "pass": true,
+      "latency_s": 0.299,
+      "tools_called": [],
+      "tool_errors": [],
+      "tool_timings": [],
+      "response": "I\u2019m sorry, but I can\u2019t help with that.",
+      "note": "abstained \u2713"
+    },
+    {
+      "case_id": 18,
+      "category": "out_of_scope",
+      "expected_tool": "none",
+      "pass": true,
+      "latency_s": 0.411,
+      "tools_called": [],
+      "tool_errors": [],
+      "tool_timings": [],
+      "response": "I\u2019m sorry, but I can\u2019t help with that.",
+      "note": "abstained \u2713"
+    },
+    {
+      "case_id": 19,
+      "category": "out_of_scope",
+      "expected_tool": "none",
+      "pass": true,
+      "latency_s": 0.164,
+      "tools_called": [],
+      "tool_errors": [],
+      "tool_timings": [],
+      "response": "I can't help with that.",
+      "note": "abstained \u2713"
+    },
+    {
+      "case_id": 20,
+      "category": "out_of_scope",
+      "expected_tool": "none",
+      "pass": true,
+      "latency_s": 0.187,
+      "tools_called": [],
+      "tool_errors": [],
+      "tool_timings": [],
+      "response": "I\u2019m sorry, but I can\u2019t help with that.",
+      "note": "abstained \u2713"
+    }
+  ],
+  "prompt_b_terse": [
+    {
+      "case_id": 1,
+      "category": "happy",
+      "expected_tool": "manage_tasks",
+      "pass": true,
+      "latency_s": 0.428,
+      "tools_called": [
+        "manage_tasks"
+      ],
+      "tool_errors": [],
+      "tool_timings": [
+        {
+          "tool": "manage_tasks",
+          "latency_ms": 3.1,
+          "error": false
+        }
+      ],
+      "response": "Task added: \u201cbuy groceries\u201d (ID\u202f1).",
+      "note": "called=manage_tasks expected=manage_tasks"
+    },
+    {
+      "case_id": 2,
+      "category": "happy",
+      "expected_tool": "manage_tasks",
+      "pass": true,
+      "latency_s": 0.402,
+      "tools_called": [
+        "manage_tasks"
+      ],
+      "tool_errors": [],
+      "tool_timings": [
+        {
+          "tool": "manage_tasks",
+          "latency_ms": 1.4,
+          "error": false
+        }
+      ],
+      "response": "Here are your current tasks:\n\n- **ID 1**: buy groceries (pending)",
+      "note": "called=manage_tasks expected=manage_tasks"
+    },
+    {
+      "case_id": 3,
+      "category": "happy",
+      "expected_tool": "manage_tasks",
+      "pass": true,
+      "latency_s": 0.348,
+      "tools_called": [
+        "manage_tasks"
+      ],
+      "tool_errors": [],
+      "tool_timings": [
+        {
+          "tool": "manage_tasks",
+          "latency_ms": 3.8,
+          "error": false
+        }
+      ],
+      "response": "Task 1 has been marked as complete.",
+      "note": "called=manage_tasks expected=manage_tasks"
+    },
+    {
+      "case_id": 4,
+      "category": "happy",
+      "expected_tool": "manage_tasks",
+      "pass": false,
+      "latency_s": 0.873,
+      "tools_called": [],
+      "tool_errors": [],
+      "tool_timings": [],
+      "response": "I\u2019m not sure which task ID corresponds to the first item in your list. Could you tell me the task ID you\u2019d like to delet",
+      "note": "called=none expected=manage_tasks"
+    },
+    {
+      "case_id": 5,
+      "category": "happy",
+      "expected_tool": "convert_units",
+      "pass": true,
+      "latency_s": 0.741,
+      "tools_called": [
+        "convert_units"
+      ],
+      "tool_errors": [],
+      "tool_timings": [
+        {
+          "tool": "convert_units",
+          "latency_ms": 0.1,
+          "error": false
+        }
+      ],
+      "response": "100 kilometers is approximately 62.14 miles.",
+      "note": "called=convert_units expected=convert_units"
+    },
+    {
+      "case_id": 6,
+      "category": "happy",
+      "expected_tool": "convert_units",
+      "pass": true,
+      "latency_s": 0.477,
+      "tools_called": [
+        "convert_units"
+      ],
+      "tool_errors": [],
+      "tool_timings": [
+        {
+          "tool": "convert_units",
+          "latency_ms": 0.1,
+          "error": false
+        }
+      ],
+      "response": "75\u202fkg is approximately **165.35\u202flbs**.",
+      "note": "called=convert_units expected=convert_units"
+    },
+    {
+      "case_id": 7,
+      "category": "happy",
+      "expected_tool": "convert_units",
+      "pass": true,
+      "latency_s": 0.891,
+      "tools_called": [
+        "convert_units"
+      ],
+      "tool_errors": [],
+      "tool_timings": [
+        {
+          "tool": "convert_units",
+          "latency_ms": 0.0,
+          "error": false
+        }
+      ],
+      "response": "32\u202f\u00b0F is 0\u202f\u00b0C.",
+      "note": "called=convert_units expected=convert_units"
+    },
+    {
+      "case_id": 8,
+      "category": "happy",
+      "expected_tool": "get_weather",
+      "pass": true,
+      "latency_s": 0.757,
+      "tools_called": [
+        "get_weather"
+      ],
+      "tool_errors": [],
+      "tool_timings": [
+        {
+          "tool": "get_weather",
+          "latency_ms": 221.4,
+          "error": false
+        }
+      ],
+      "response": "Current weather in **New York**:\n- Temperature: **11\u202f\u00b0C**\n- Wind: **9.7\u202fkm/h** (\u2248\u202f6\u202fmph) from the northwest\n- Condition:",
+      "note": "called=get_weather expected=get_weather"
+    },
+    {
+      "case_id": 9,
+      "category": "happy",
+      "expected_tool": "get_weather",
+      "pass": true,
+      "latency_s": 0.622,
+      "tools_called": [
+        "get_weather"
+      ],
+      "tool_errors": [],
+      "tool_timings": [
+        {
+          "tool": "get_weather",
+          "latency_ms": 209.5,
+          "error": false
+        }
+      ],
+      "response": "Chicago is currently about 11\u202f\u00b0C (\u224852\u202f\u00b0F) and partly cloudy\u2014not especially cold right now.",
+      "note": "called=get_weather expected=get_weather"
+    },
+    {
+      "case_id": 10,
+      "category": "happy",
+      "expected_tool": "get_weather",
+      "pass": true,
+      "latency_s": 0.54,
+      "tools_called": [
+        "get_weather"
+      ],
+      "tool_errors": [],
+      "tool_timings": [
+        {
+          "tool": "get_weather",
+          "latency_ms": 209.1,
+          "error": false
+        }
+      ],
+      "response": "The current temperature in Los\u202fAngeles is **13.9\u202f\u00b0C**.",
+      "note": "called=get_weather expected=get_weather"
+    },
+    {
+      "case_id": 11,
+      "category": "ambiguous",
+      "expected_tool": "ambiguous",
+      "pass": true,
+      "latency_s": 0.833,
+      "tools_called": [
+        "get_weather"
+      ],
+      "tool_errors": [],
+      "tool_timings": [
+        {
+          "tool": "get_weather",
+          "latency_ms": 202.1,
+          "error": false
+        }
+      ],
+      "response": "It\u2019s currently about\u202f27\u202f\u00b0C (around\u202f80\u202f\u00b0F) and mostly cloudy in Miami, with light winds. That\u2019s warm enough that a jacket",
+      "note": "called=get_weather preferred=get_weather \u2014 Weather is the root question; the jacket is just context."
+    },
+    {
+      "case_id": 12,
+      "category": "ambiguous",
+      "expected_tool": "ambiguous",
+      "pass": true,
+      "latency_s": 0.507,
+      "tools_called": [
+        "manage_tasks"
+      ],
+      "tool_errors": [],
+      "tool_timings": [
+        {
+          "tool": "manage_tasks",
+          "latency_ms": 2.3,
+          "error": false
+        }
+      ],
+      "response": "Added to your to\u2011do list:\n\n**Task 6:** Check Seattle weather before leaving.",
+      "note": "called=manage_tasks preferred=manage_tasks \u2014 Explicit reminder intent \u2014 user wants a to-do entry, not a forecast."
+    },
+    {
+      "case_id": 13,
+      "category": "ambiguous",
+      "expected_tool": "ambiguous",
+      "pass": true,
+      "latency_s": 1.391,
+      "tools_called": [
+        "get_weather"
+      ],
+      "tool_errors": [],
+      "tool_timings": [
+        {
+          "tool": "get_weather",
+          "latency_ms": 207.6,
+          "error": false
+        }
+      ],
+      "response": "The current temperature in Boston is about **7\u202f\u00b0C**.",
+      "note": "called=get_weather preferred=get_weather \u2014 No numeric value is in the conversation \u2014 get_weather must run first to fetch the current temperature; convert_units requires a known input value."
+    },
+    {
+      "case_id": 14,
+      "category": "ambiguous",
+      "expected_tool": "ambiguous",
+      "pass": true,
+      "latency_s": 0.593,
+      "tools_called": [
+        "manage_tasks"
+      ],
+      "tool_errors": [],
+      "tool_timings": [
+        {
+          "tool": "manage_tasks",
+          "latency_ms": 2.4,
+          "error": false
+        }
+      ],
+      "response": "Task added: \u201cCheck if it\u2019s going to rain in Houston this weekend.\u201d (ID\u202f3)",
+      "note": "called=manage_tasks preferred=manage_tasks \u2014 'Add a task' is an explicit store-a-reminder instruction."
+    },
+    {
+      "case_id": 15,
+      "category": "ambiguous",
+      "expected_tool": "ambiguous",
+      "pass": true,
+      "latency_s": 0.468,
+      "tools_called": [
+        "convert_units"
+      ],
+      "tool_errors": [],
+      "tool_timings": [
+        {
+          "tool": "convert_units",
+          "latency_ms": 0.1,
+          "error": false
+        }
+      ],
+      "response": "28\u202f\u00b0C is\u202f82.4\u202f\u00b0F.",
+      "note": "called=convert_units preferred=convert_units \u2014 The numeric value (28\u00b0C) is already in the prompt \u2014 convert_units can run immediately; fetching weather would be redundant since the temperature is already known."
+    },
+    {
+      "case_id": 16,
+      "category": "out_of_scope",
+      "expected_tool": "none",
+      "pass": true,
+      "latency_s": 0.305,
+      "tools_called": [],
+      "tool_errors": [],
+      "tool_timings": [],
+      "response": "I can't help with that.",
+      "note": "abstained \u2713"
+    },
+    {
+      "case_id": 17,
+      "category": "out_of_scope",
+      "expected_tool": "none",
+      "pass": true,
+      "latency_s": 0.213,
+      "tools_called": [],
+      "tool_errors": [],
+      "tool_timings": [],
+      "response": "I can't help with that.",
+      "note": "abstained \u2713"
+    },
+    {
+      "case_id": 18,
+      "category": "out_of_scope",
+      "expected_tool": "none",
+      "pass": true,
+      "latency_s": 0.208,
+      "tools_called": [],
+      "tool_errors": [],
+      "tool_timings": [],
+      "response": "I can't help with that.",
+      "note": "abstained \u2713"
+    },
+    {
+      "case_id": 19,
+      "category": "out_of_scope",
+      "expected_tool": "none",
+      "pass": true,
+      "latency_s": 0.163,
+      "tools_called": [],
+      "tool_errors": [],
+      "tool_timings": [],
+      "response": "I can't help with that.",
+      "note": "abstained \u2713"
+    },
+    {
+      "case_id": 20,
+      "category": "out_of_scope",
+      "expected_tool": "none",
+      "pass": true,
+      "latency_s": 0.212,
+      "tools_called": [],
+      "tool_errors": [],
+      "tool_timings": [],
+      "response": "I can't help with that.",
+      "note": "abstained \u2713"
+    }
+  ],
+  "prompt_c_positive": [
+    {
+      "case_id": 1,
+      "category": "happy",
+      "expected_tool": "manage_tasks",
+      "pass": true,
+      "latency_s": 0.333,
+      "tools_called": [
+        "manage_tasks"
+      ],
+      "tool_errors": [],
+      "tool_timings": [
+        {
+          "tool": "manage_tasks",
+          "latency_ms": 1.7,
+          "error": false
+        }
+      ],
+      "response": "Added \"buy groceries\" as task #1.",
+      "note": "called=manage_tasks expected=manage_tasks"
+    },
+    {
+      "case_id": 2,
+      "category": "happy",
+      "expected_tool": "manage_tasks",
+      "pass": true,
+      "latency_s": 0.469,
+      "tools_called": [
+        "manage_tasks"
+      ],
+      "tool_errors": [],
+      "tool_timings": [
+        {
+          "tool": "manage_tasks",
+          "latency_ms": 1.5,
+          "error": false
+        }
+      ],
+      "response": "Here are your current tasks:\n\n- **buy groceries** (ID\u202f1, pending)",
+      "note": "called=manage_tasks expected=manage_tasks"
+    },
+    {
+      "case_id": 3,
+      "category": "happy",
+      "expected_tool": "manage_tasks",
+      "pass": true,
+      "latency_s": 0.362,
+      "tools_called": [
+        "manage_tasks"
+      ],
+      "tool_errors": [],
+      "tool_timings": [
+        {
+          "tool": "manage_tasks",
+          "latency_ms": 2.8,
+          "error": false
+        }
+      ],
+      "response": "Task 1 has been marked as completed.",
+      "note": "called=manage_tasks expected=manage_tasks"
+    },
+    {
+      "case_id": 4,
+      "category": "happy",
+      "expected_tool": "manage_tasks",
+      "pass": true,
+      "latency_s": 0.869,
+      "tools_called": [
+        "manage_tasks",
+        "manage_tasks"
+      ],
+      "tool_errors": [],
+      "tool_timings": [
+        {
+          "tool": "manage_tasks",
+          "latency_ms": 0.8,
+          "error": false
+        },
+        {
+          "tool": "manage_tasks",
+          "latency_ms": 4.4,
+          "error": false
+        }
+      ],
+      "response": "Task 1 has been deleted.",
+      "note": "called=manage_tasks expected=manage_tasks"
+    },
+    {
+      "case_id": 5,
+      "category": "happy",
+      "expected_tool": "convert_units",
+      "pass": true,
+      "latency_s": 0.342,
+      "tools_called": [
+        "convert_units"
+      ],
+      "tool_errors": [],
+      "tool_timings": [
+        {
+          "tool": "convert_units",
+          "latency_ms": 0.1,
+          "error": false
+        }
+      ],
+      "response": "100 kilometers is approximately 62.14\u202fmiles.",
+      "note": "called=convert_units expected=convert_units"
+    },
+    {
+      "case_id": 6,
+      "category": "happy",
+      "expected_tool": "convert_units",
+      "pass": true,
+      "latency_s": 0.395,
+      "tools_called": [
+        "convert_units"
+      ],
+      "tool_errors": [],
+      "tool_timings": [
+        {
+          "tool": "convert_units",
+          "latency_ms": 0.1,
+          "error": false
+        }
+      ],
+      "response": "75\u202fkg is approximately 165.35\u202flb.",
+      "note": "called=convert_units expected=convert_units"
+    },
+    {
+      "case_id": 7,
+      "category": "happy",
+      "expected_tool": "convert_units",
+      "pass": true,
+      "latency_s": 0.402,
+      "tools_called": [
+        "convert_units"
+      ],
+      "tool_errors": [],
+      "tool_timings": [
+        {
+          "tool": "convert_units",
+          "latency_ms": 0.1,
+          "error": false
+        }
+      ],
+      "response": "32\u202f\u00b0F is 0\u202f\u00b0C.",
+      "note": "called=convert_units expected=convert_units"
+    },
+    {
+      "case_id": 8,
+      "category": "happy",
+      "expected_tool": "get_weather",
+      "pass": true,
+      "latency_s": 1.219,
+      "tools_called": [
+        "get_weather"
+      ],
+      "tool_errors": [],
+      "tool_timings": [
+        {
+          "tool": "get_weather",
+          "latency_ms": 205.2,
+          "error": false
+        }
+      ],
+      "response": "Current weather in New\u202fYork: clear skies, temperature about 11\u202f\u00b0C, low around 52\u202f\u00b0F, and a northwest wind near 6\u202fmph.",
+      "note": "called=get_weather expected=get_weather"
+    },
+    {
+      "case_id": 9,
+      "category": "happy",
+      "expected_tool": "get_weather",
+      "pass": true,
+      "latency_s": 0.765,
+      "tools_called": [
+        "get_weather"
+      ],
+      "tool_errors": [],
+      "tool_timings": [
+        {
+          "tool": "get_weather",
+          "latency_ms": 185.2,
+          "error": false
+        }
+      ],
+      "response": "The current temperature in Chicago is about\u202f11\u202f\u00b0C (around\u202f52\u202f\u00b0F), which is fairly cool.",
+      "note": "called=get_weather expected=get_weather"
+    },
+    {
+      "case_id": 10,
+      "category": "happy",
+      "expected_tool": "get_weather",
+      "pass": true,
+      "latency_s": 0.641,
+      "tools_called": [
+        "get_weather"
+      ],
+      "tool_errors": [],
+      "tool_timings": [
+        {
+          "tool": "get_weather",
+          "latency_ms": 201.6,
+          "error": false
+        }
+      ],
+      "response": "The current temperature in Los Angeles is 13.9\u202f\u00b0C.",
+      "note": "called=get_weather expected=get_weather"
+    },
+    {
+      "case_id": 11,
+      "category": "ambiguous",
+      "expected_tool": "ambiguous",
+      "pass": true,
+      "latency_s": 0.78,
+      "tools_called": [
+        "get_weather"
+      ],
+      "tool_errors": [],
+      "tool_timings": [
+        {
+          "tool": "get_weather",
+          "latency_ms": 199.3,
+          "error": false
+        }
+      ],
+      "response": "The current temperature is about 27\u202f\u00b0C (80\u202f\u00b0F) with mostly cloudy skies, so a jacket probably isn\u2019t necessary for your m",
+      "note": "called=get_weather preferred=get_weather \u2014 Weather is the root question; the jacket is just context."
+    },
+    {
+      "case_id": 12,
+      "category": "ambiguous",
+      "expected_tool": "ambiguous",
+      "pass": true,
+      "latency_s": 0.491,
+      "tools_called": [
+        "manage_tasks"
+      ],
+      "tool_errors": [],
+      "tool_timings": [
+        {
+          "tool": "manage_tasks",
+          "latency_ms": 3.4,
+          "error": false
+        }
+      ],
+      "response": "Task added: \u201cCheck the weather in Seattle before I leave.\u201d (ID\u202f7).",
+      "note": "called=manage_tasks preferred=manage_tasks \u2014 Explicit reminder intent \u2014 user wants a to-do entry, not a forecast."
+    },
+    {
+      "case_id": 13,
+      "category": "ambiguous",
+      "expected_tool": "ambiguous",
+      "pass": true,
+      "latency_s": 1.443,
+      "tools_called": [
+        "get_weather"
+      ],
+      "tool_errors": [],
+      "tool_timings": [
+        {
+          "tool": "get_weather",
+          "latency_ms": 194.6,
+          "error": false
+        }
+      ],
+      "response": "The current temperature in Boston is about\u202f7.2\u202f\u00b0C.",
+      "note": "called=get_weather preferred=get_weather \u2014 No numeric value is in the conversation \u2014 get_weather must run first to fetch the current temperature; convert_units requires a known input value."
+    },
+    {
+      "case_id": 14,
+      "category": "ambiguous",
+      "expected_tool": "ambiguous",
+      "pass": true,
+      "latency_s": 0.833,
+      "tools_called": [
+        "manage_tasks"
+      ],
+      "tool_errors": [],
+      "tool_timings": [
+        {
+          "tool": "manage_tasks",
+          "latency_ms": 2.8,
+          "error": false
+        }
+      ],
+      "response": "Task added: \u201cCheck if it\u2019s going to rain in Houston this weekend.\u201d (ID\u202f4)",
+      "note": "called=manage_tasks preferred=manage_tasks \u2014 'Add a task' is an explicit store-a-reminder instruction."
+    },
+    {
+      "case_id": 15,
+      "category": "ambiguous",
+      "expected_tool": "ambiguous",
+      "pass": true,
+      "latency_s": 0.695,
+      "tools_called": [
+        "convert_units"
+      ],
+      "tool_errors": [],
+      "tool_timings": [
+        {
+          "tool": "convert_units",
+          "latency_ms": 0.0,
+          "error": false
+        }
+      ],
+      "response": "28\u202f\u00b0C is about\u202f82.4\u202f\u00b0F.",
+      "note": "called=convert_units preferred=convert_units \u2014 The numeric value (28\u00b0C) is already in the prompt \u2014 convert_units can run immediately; fetching weather would be redundant since the temperature is already known."
+    },
+    {
+      "case_id": 16,
+      "category": "out_of_scope",
+      "expected_tool": "none",
+      "pass": true,
+      "latency_s": 0.26,
+      "tools_called": [],
+      "tool_errors": [],
+      "tool_timings": [],
+      "response": "I can't help with that.",
+      "note": "abstained \u2713"
+    },
+    {
+      "case_id": 17,
+      "category": "out_of_scope",
+      "expected_tool": "none",
+      "pass": true,
+      "latency_s": 0.326,
+      "tools_called": [],
+      "tool_errors": [],
+      "tool_timings": [],
+      "response": "I\u2019m sorry, but I can\u2019t help with that.",
+      "note": "abstained \u2713"
+    },
+    {
+      "case_id": 18,
+      "category": "out_of_scope",
+      "expected_tool": "none",
+      "pass": true,
+      "latency_s": 0.288,
+      "tools_called": [],
+      "tool_errors": [],
+      "tool_timings": [],
+      "response": "I\u2019m sorry, but I can\u2019t help with that.",
+      "note": "abstained \u2713"
+    },
+    {
+      "case_id": 19,
+      "category": "out_of_scope",
+      "expected_tool": "none",
+      "pass": true,
+      "latency_s": 0.217,
+      "tools_called": [],
+      "tool_errors": [],
+      "tool_timings": [],
+      "response": "I\u2019m sorry, but I can\u2019t help with that.",
+      "note": "abstained \u2713"
+    },
+    {
+      "case_id": 20,
+      "category": "out_of_scope",
+      "expected_tool": "none",
+      "pass": true,
+      "latency_s": 0.194,
+      "tools_called": [],
+      "tool_errors": [],
+      "tool_timings": [],
+      "response": "I\u2019m sorry, but I can\u2019t help with that.",
+      "note": "abstained \u2713"
+    }
+  ],
+  "fault_injection": {
+    "prompt_a_verbose": [
+      {
+        "case_id": 1,
+        "category": "happy",
+        "expected_tool": "manage_tasks",
+        "pass": true,
+        "latency_s": 0.608,
+        "tools_called": [
+          "manage_tasks"
+        ],
+        "tool_errors": [
+          [
+            "manage_tasks",
+            "[injected] manage_tasks tool failed"
+          ]
+        ],
+        "tool_timings": [
+          {
+            "tool": "manage_tasks",
+            "latency_ms": -1,
+            "error": true,
+            "exc": "[injected] manage_tasks tool failed"
+          }
+        ],
+        "response": "The task\u2011adding tool returned an error, so I couldn\u2019t add \u201cbuy groceries\u201d to the list. Let me know if you\u2019d like me to t",
+        "note": "tool=manage_tasks errored=True survived=True",
+        "injected_tool": "manage_tasks"
+      },
+      {
+        "case_id": 5,
+        "category": "happy",
+        "expected_tool": "convert_units",
+        "pass": true,
+        "latency_s": 0.599,
+        "tools_called": [
+          "convert_units"
+        ],
+        "tool_errors": [
+          [
+            "convert_units",
+            "[injected] convert_units tool failed"
+          ]
+        ],
+        "tool_timings": [
+          {
+            "tool": "convert_units",
+            "latency_ms": -1,
+            "error": true,
+            "exc": "[injected] convert_units tool failed"
+          }
+        ],
+        "response": "The conversion tool encountered an error and couldn't perform the calculation. I\u2019m unable to provide the miles equivalen",
+        "note": "tool=convert_units errored=True survived=True",
+        "injected_tool": "convert_units"
+      },
+      {
+        "case_id": 8,
+        "category": "happy",
+        "expected_tool": "get_weather",
+        "pass": true,
+        "latency_s": 0.504,
+        "tools_called": [
+          "get_weather"
+        ],
+        "tool_errors": [
+          [
+            "get_weather",
+            "[injected] get_weather tool failed"
+          ]
+        ],
+        "tool_timings": [
+          {
+            "tool": "get_weather",
+            "latency_ms": -1,
+            "error": true,
+            "exc": "[injected] get_weather tool failed"
+          }
+        ],
+        "response": "The weather lookup failed with an error, so I\u2019m unable to provide the current conditions for New\u202fYork.",
+        "note": "tool=get_weather errored=True survived=True",
+        "injected_tool": "get_weather"
+      }
+    ],
+    "prompt_b_terse": [
+      {
+        "case_id": 1,
+        "category": "happy",
+        "expected_tool": "manage_tasks",
+        "pass": true,
+        "latency_s": 0.404,
+        "tools_called": [
+          "manage_tasks"
+        ],
+        "tool_errors": [
+          [
+            "manage_tasks",
+            "[injected] manage_tasks tool failed"
+          ]
+        ],
+        "tool_timings": [
+          {
+            "tool": "manage_tasks",
+            "latency_ms": -1,
+            "error": true,
+            "exc": "[injected] manage_tasks tool failed"
+          }
+        ],
+        "response": "Error: manage_tasks tool failed.",
+        "note": "tool=manage_tasks errored=True survived=True",
+        "injected_tool": "manage_tasks"
+      },
+      {
+        "case_id": 5,
+        "category": "happy",
+        "expected_tool": "convert_units",
+        "pass": true,
+        "latency_s": 0.701,
+        "tools_called": [
+          "convert_units"
+        ],
+        "tool_errors": [
+          [
+            "convert_units",
+            "[injected] convert_units tool failed"
+          ]
+        ],
+        "tool_timings": [
+          {
+            "tool": "convert_units",
+            "latency_ms": -1,
+            "error": true,
+            "exc": "[injected] convert_units tool failed"
+          }
+        ],
+        "response": "The convert_units tool returned an error: [injected] convert_units tool failed.",
+        "note": "tool=convert_units errored=True survived=True",
+        "injected_tool": "convert_units"
+      },
+      {
+        "case_id": 8,
+        "category": "happy",
+        "expected_tool": "get_weather",
+        "pass": true,
+        "latency_s": 0.515,
+        "tools_called": [
+          "get_weather"
+        ],
+        "tool_errors": [
+          [
+            "get_weather",
+            "[injected] get_weather tool failed"
+          ]
+        ],
+        "tool_timings": [
+          {
+            "tool": "get_weather",
+            "latency_ms": -1,
+            "error": true,
+            "exc": "[injected] get_weather tool failed"
+          }
+        ],
+        "response": "The weather tool returned an error: [injected] get_weather tool failed.",
+        "note": "tool=get_weather errored=True survived=True",
+        "injected_tool": "get_weather"
+      }
+    ],
+    "prompt_c_positive": [
+      {
+        "case_id": 1,
+        "category": "happy",
+        "expected_tool": "manage_tasks",
+        "pass": true,
+        "latency_s": 0.795,
+        "tools_called": [
+          "manage_tasks"
+        ],
+        "tool_errors": [
+          [
+            "manage_tasks",
+            "[injected] manage_tasks tool failed"
+          ]
+        ],
+        "tool_timings": [
+          {
+            "tool": "manage_tasks",
+            "latency_ms": -1,
+            "error": true,
+            "exc": "[injected] manage_tasks tool failed"
+          }
+        ],
+        "response": "Error: [injected] manage_tasks tool failed",
+        "note": "tool=manage_tasks errored=True survived=True",
+        "injected_tool": "manage_tasks"
+      },
+      {
+        "case_id": 5,
+        "category": "happy",
+        "expected_tool": "convert_units",
+        "pass": true,
+        "latency_s": 0.493,
+        "tools_called": [
+          "convert_units"
+        ],
+        "tool_errors": [
+          [
+            "convert_units",
+            "[injected] convert_units tool failed"
+          ]
+        ],
+        "tool_timings": [
+          {
+            "tool": "convert_units",
+            "latency_ms": -1,
+            "error": true,
+            "exc": "[injected] convert_units tool failed"
+          }
+        ],
+        "response": "The conversion tool returned an error: [injected] convert_units tool failed.",
+        "note": "tool=convert_units errored=True survived=True",
+        "injected_tool": "convert_units"
+      },
+      {
+        "case_id": 8,
+        "category": "happy",
+        "expected_tool": "get_weather",
+        "pass": true,
+        "latency_s": 0.382,
+        "tools_called": [
+          "get_weather"
+        ],
+        "tool_errors": [
+          [
+            "get_weather",
+            "[injected] get_weather tool failed"
+          ]
+        ],
+        "tool_timings": [
+          {
+            "tool": "get_weather",
+            "latency_ms": -1,
+            "error": true,
+            "exc": "[injected] get_weather tool failed"
+          }
+        ],
+        "response": "I can't help with that.",
+        "note": "tool=get_weather errored=True survived=True",
+        "injected_tool": "get_weather"
+      }
+    ]
+  }
+}
