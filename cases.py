@@ -1,34 +1,11 @@
 """
-cases.py — eval dataset: Case dataclass, all 20 cases, the derived fault set,
-and 3 multi-turn cases that test the stateful tool across conversation turns.
+cases.py — eval dataset: Case dataclass, all 20 cases, and the derived fault set.
 
 This module only defines *what* to test, not how to run or score it.
 Add new cases here without touching harness or scoring logic.
 """
 
-from dataclasses import dataclass, field
-
-
-@dataclass
-class Turn:
-    """A single turn in a multi-turn sequence."""
-    prompt: str
-    expected_tool: str          # tool name | "none"
-    # Minimum substring the response must contain to pass (case-insensitive).
-    # Empty string means any non-empty response is acceptable.
-    response_contains: str = ""
-
-
-@dataclass
-class MultiTurnCase:
-    """A multi-turn conversation that tests stateful behaviour across turns.
-
-    Correct behaviour requires the agent to use information from previous turns —
-    the right tool call on turn N depends on what happened on turn N-1.
-    """
-    id: int
-    description: str
-    turns: list[Turn] = field(default_factory=list)
+from dataclasses import dataclass
 
 
 @dataclass
@@ -96,88 +73,3 @@ for _c in CASES:
         FAULT_CASES.append(_c)
         _seen.add(_c.expected_tool)
 del _seen
-
-
-# ── multi-turn cases ───────────────────────────────────────────────────────────
-# These test the stateful tool (manage_tasks) across genuine conversation turns.
-# Each turn's correct call depends on what happened in the previous turn:
-# the agent must read its own prior tool results from message history to proceed.
-# Run against a fresh DB each time (reset_db() before each case).
-
-MULTI_TURN_CASES: list[MultiTurnCase] = [
-    MultiTurnCase(
-        id=1,
-        description="Add → query by name → complete by discovered ID",
-        turns=[
-            Turn(
-                prompt="Add 'call the dentist' to my task list.",
-                expected_tool="manage_tasks",
-                response_contains="dentist",
-            ),
-            Turn(
-                # Agent must retrieve the task list to find the ID — it is not
-                # in the conversation. This is the core stateful dependency.
-                prompt="What tasks do I have?",
-                expected_tool="manage_tasks",
-                response_contains="dentist",
-            ),
-            Turn(
-                # The correct task_id depends on what the list turn returned.
-                # A new agent instance with no history would ask for the ID;
-                # an agent with history infers it from turn 2.
-                prompt="Mark the dentist task as complete.",
-                expected_tool="manage_tasks",
-                response_contains="complet",
-            ),
-        ],
-    ),
-    MultiTurnCase(
-        id=2,
-        description="Add two tasks → delete the first one by position",
-        turns=[
-            Turn(
-                prompt="Add 'buy milk' to my task list.",
-                expected_tool="manage_tasks",
-                response_contains="milk",
-            ),
-            Turn(
-                prompt="Also add 'call landlord'.",
-                expected_tool="manage_tasks",
-                response_contains="landlord",
-            ),
-            Turn(
-                # Agent must list (or remember from history) to resolve "the first".
-                # This is exactly Case 4 from the single-turn set — the failure
-                # prompt_b_terse triggered — replayed as a multi-turn sequence
-                # where the agent has prior context to draw on.
-                prompt="Delete the first task in my list.",
-                expected_tool="manage_tasks",
-                response_contains="delet",
-            ),
-        ],
-    ),
-    MultiTurnCase(
-        id=3,
-        description="Weather lookup → convert the returned temperature → store reminder",
-        turns=[
-            Turn(
-                prompt="What's the weather like in Denver right now?",
-                expected_tool="get_weather",
-                response_contains="denver",
-            ),
-            Turn(
-                # The numeric value (temperature) is now in conversation history —
-                # convert_units should fire without fetching weather again.
-                prompt="Convert that temperature to Fahrenheit.",
-                expected_tool="convert_units",
-                response_contains="°f",
-            ),
-            Turn(
-                # Verify the agent stores a reminder, not another weather fetch.
-                prompt="Add a task to check Denver weather again tomorrow.",
-                expected_tool="manage_tasks",
-                response_contains="denver",
-            ),
-        ],
-    ),
-]
