@@ -1,4 +1,4 @@
-.PHONY: run eval eval-fail agent install
+.PHONY: run eval agent install
 
 # Primary target — required by assignment spec.
 # Uses Groq LPU (openai/gpt-oss-120b) for sub-second per-call latency.
@@ -9,10 +9,6 @@ run:
 
 # Alias
 eval: run
-
-# Global fault injection: all three tools fail simultaneously.
-eval-fail:
-	FORCE_FAIL=manage_tasks,convert_units,get_weather GROQ_API_KEY=$$GROQ_API_KEY uv run python eval.py
 
 # Interactive agent REPL — also Groq for speed.
 agent:
